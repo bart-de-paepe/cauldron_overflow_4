@@ -1,7 +1,13 @@
-index:
+app_homepage:
     path: /
     controller: App\Controller\QuestionController::homepage
 
-show:
+app_show:
     path: /show/{slug}
     controller: App\Controller\QuestionController::show
+
+app_comment_vote:
+    path: /comments/{id}/vote/{direction<up|down>}
+    controller: App\Controller\CommentController::commentVote
+    methods: ['POST']
+
