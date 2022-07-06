@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\MarkdownHelper;
 use Psr\Log\LoggerInterface;
+use Sentry\State\HubInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +36,7 @@ class QuestionController extends AbstractController
         if($this->isDebug){
             $this->logger->info('we are in debug mode');
         }
+
         $questionText = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
         $parsedQuestionText = $markdownHelper->parse($questionText);
         /*$parsedQuestionText = $cache->get('markdown_'.md5($questionText), function () use ($questionText, $markdownParser) {
